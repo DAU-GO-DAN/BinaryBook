@@ -99,25 +99,184 @@ header, main, footer {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+.hide-screen {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(173, 181, 189, .75);
+  position: fixed;
+  z-index: 10;
+}
 
 /* **************** */
+
+
+/* bắt đầu phần cart */
+.cart-section {
+  background: rgb(255,50,125);
+  background: linear-gradient(45deg, rgb(255, 207, 225) 0%, rgba(255,255,255,1) 50%, rgb(209, 220, 255) 100%);
+  padding: 1rem 2rem;
+  z-index: 11;
+  box-sizing: border-box;
+}
+.cart-title {
+  box-sizing: border-box;
+  width: 80%;
+	margin: 1rem auto;
+  padding: .5rem;
+}
+.cart-title > p {
+  line-height: 1.2;
+  font-family: "Agbalumo", sans-serif;
+  font-weight: 500;
+  font-size: 1.25rem;
+  color: #05192D;
+}
+.cart-title > p:last-child {
+  font-size: 1rem;
+}
+.cart-ctn {
+  box-sizing: border-box;
+  width: 80%;
+	margin: 1rem auto;
+  padding: .5rem;
+}
+.cart-ctn > p {
+  box-sizing: border-box;
+}
+.cart-table {
+  display: table;
+  width: 100%;
+  margin-bottom: 1rem;
+  border-collapse: collapse;
+  background-color: #f8f6ee;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.75);
+}
+.cart-thead {
+  box-sizing: border-box;
+  display: table-header-group;
+  border-bottom: 1.5px solid rebeccapurple;
+}
+.cart-tbody {
+  box-sizing: border-box;
+  display: table-row-group;
+  color: #283618;
+}
+.cart-tfoot {
+  box-sizing: border-box;
+  display: table-footer-group;
+  border-top: 1.5px solid rebeccapurple;
+}
+.cart-tr {
+  display: table-row;
+	border-bottom: .5px solid rgba(102, 51, 153, .3)
+}
+.cart-td {
+	font-size: .825rem;
+}
+.cart-th,
+.cart-td {
+  display: table-cell;
+  padding: .5rem;
+	text-align: center;
+  vertical-align: middle;
+}
+.cart-th {
+  font-weight: bold;
+  font-size: .9rem;
+  background-color: #fefae0;
+}
+.cart-td:nth-of-type(5n+2) {
+	width: 17%;
+}
+.cart-td:nth-of-type(5n+3) {
+	width: 11%;
+}
+.cart-td:nth-of-type(5n+4) {
+	width: 17%;
+}
+.cart-td:nth-of-type(5n) {
+	width: 5%;
+}
+.cart-product {
+	box-sizing: border-box;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-items: center;
+}
+.cart-product-image {
+	box-sizing: border-box;
+	width: 20%;
+	height: 100%;
+}
+.cart-product-image > img {
+	box-sizing: border-box;
+	display: block;
+  width: 50%;;
+  height: 50%;
+  max-height: 60%;
+}
+.cart-product-name {
+  box-sizing: border-box;
+	width: 80%;
+  font-weight: bold;
+	font-size: .8rem;
+  line-height: 1.2;
+}
+.cart-quantity input[type="number"] {
+  box-sizing: border-box;
+}
+.cart-delete-item {
+	box-sizing: border-box;
+	transform: scale(1.25);
+}
+.cart-options {
+  box-sizing: border-box;
+  width: 100%;
+  padding: .5rem 0;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.cart-options > button {
+  border-radius: .5rem;
+  font-family: 'Open Sans', sans-serif;
+  font-size: .8rem;
+  height: 2rem;
+}
+.delete-all-items {
+  box-sizing: border-box;
+  width: 30%;
+  font-weight: 500;
+}
+.place-an-order {
+  box-sizing: border-box;
+  width: 66%;
+  font-weight: 700;
+  
+}
+/* kết thúc phần cart */
 
 /* bắt đầu phần signin */
 .signin-section {
   box-sizing: border-box;
   background-color: #f1faee;
-  padding: 1rem;
+  padding: 2rem;
   border-radius: .5rem;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.6);
+  z-index: 11;
+  max-height: 35rem;
+  overflow-x: auto;
 }
 .signin-header {
   box-sizing: border-box;
   width: 100%;
-  padding: .5rem 0 1rem;
+  padding: .5rem 0 1.5rem;
   margin-bottom: .5rem;
   position: relative;
   color: #023047;
-  border-bottom: thick double rgba(0, 119, 182, 0.3);
+  border-bottom: thick double rgba(168, 177, 165, .5);
   background-color: transparent;
   text-transform: uppercase;
   font-family: 'IBM Plex Sans', sans-serif;
@@ -128,7 +287,7 @@ header, main, footer {
   font-size: 1.2rem;
   text-align: center;
 }
-.signin-header > button {
+.signin-close-button {
   width: 2rem;
   height: 2rem;
   text-align: center;
@@ -145,70 +304,97 @@ header, main, footer {
   cursor: pointer;
   outline: none;
 }
-.signin-header > button:hover {
+.signin-close-button:hover {
   transform: scale(1.05);
   transition: transform 0.5s ease-in-out;
 }
 .signin-main {
   box-sizing: border-box;
   width: 100%;
-  padding: 1rem;
+  padding: .5rem 0;
   background-color: transparent;
   border-bottom: 1px solid rgba(168, 177, 165, .5);
 }
+.show-errors {
+  box-sizing: border-box;
+  display: none;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 0 1rem;
+  padding: .5rem 0;
+}
+.show-errors > li {
+  box-sizing: border-box;
+  font-family: 'Roboto Slab', sans-serif;
+  font-size: .8rem;
+  font-weight: 500;
+  color: #f04;
+  line-height: 1.25;
+}
+.error-icon {
+  position: relative;
+  top: 1px;
+  color: #f04;
+  height: 10px;
+  width: 10px;
+  margin: 0 .5rem 0 1rem;
+  font-weight: 700;
+  transform: scale(1.5);
+}
 .signin-main form {
-  width: 80%;
+  box-sizing: border-box;
+  width: 100%;
   margin: 0 auto;
   padding: 0;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-  align-items: center;
 }
-.signin-column-one {
-  height: 100%;
-  width: 50%;
-  text-align: left;
-}
-.signin-column-one > label {
-  margin: .2rem 0 .2rem auto;
-  padding: .1rem 0;
+.signin-main label, .signin-main input {
   display: block;
-  font-size: .9rem;
-  font-weight: 600;
-  font-family: "Open Sans", sans-serif;
-  height: 2rem;
-  line-height: 2;
-}
-.signin-column-two {
-  height: 100%;
-  width: 45%;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: space-around;
-  align-items: flex-end;
-}
-.signin-column-two > input {
-  height: 2rem;
+  width: 100%;
   box-sizing: border-box;
-  margin: .2rem 0 .2rem auto;
-  font-size: .85rem;
-  font-weight: 400;
-  font-family: 'Open Sans', sans-serif;
-  padding-left: 6%;
-  outline: none;
-  border: none;
-  border-radius: 5%;
-  background-color: #ebf0e8;
+  font-family: "Open Sans", sans-serif;
 }
-.signin-column-two > input::placeholder {
+.signin-main label {
+  margin: .5rem 0;
+  font-size: .9rem;
+  font-weight: 500;
+}
+.signin-main input {
+  margin: .5rem 0 1rem;
+  padding: .4rem .8rem;
+  font-weight: 400;
+  background-color: transparent;
+  border: 2px solid #e5e1da;
+  border-radius: 4px;
+  color: #05192d;
+  line-height: 1.5;
+  outline: none;
+}
+.signin-main input::placeholder {
   color:#b0b0b0;
   font-style: italic;
+  letter-spacing: .5px;
 }
-.signin-column-two > input:focus {
-  outline: 2px solid rgba(168, 203, 255, .5);
+.signin-main input:focus {
+  border: 2px solid rgba(2, 237, 96, .5);
   color: #023047;
-  background-color: #dee7da;
+  background-color: #f8fdf5;
+}
+.signin-main .signin-btn {
+  box-sizing:border-box;
+  margin: 1.5rem 0 1rem;
+  padding: .5rem 0;
+
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  
+  border: none;
+  outline: 1px solid #03ef62;
+  border-radius: .5rem;
+  background-color: #03ef62;
+}
+.signin-main .signin-btn:hover {
+  background-color: #65ff8f;
 }
 .signin-footer {
   box-sizing: border-box;
@@ -271,12 +457,13 @@ header, main, footer {
   box-sizing: border-box;
   background-color: #fefae0;
   padding: 0;
+  z-index: 1;
 }
 .saf-area {
   width: 100%;
   height: 15%;
-  padding: .5rem 0;
-  margin-bottom: 3px solid #2b0f42;
+  padding: .5rem 5%;
+  border-bottom: 3px solid #2b0f42;
 
   box-sizing: border-box;
   display: flex;
@@ -286,7 +473,7 @@ header, main, footer {
 
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.6);
   background: rgb(241,250,238);
-  background: linear-gradient(90deg, rgba(241,250,238,0.9) 0%, rgba(168,218,220,0.9) 50%, rgba(69,123,157,0.9) 100%);
+  background: linear-gradient(90deg, rgba(69,123,157,0.9) 0%, rgba(168,218,220,0.9) 50%, rgba(241,250,238,0.9) 100%);
 }
 .filter {
   box-sizing: border-box;
@@ -340,26 +527,6 @@ header, main, footer {
   align-items: center;
   overflow: scroll;
   padding: 2% 10%;
-  background-color: rgba(230, 230, 230, .95)
-}
-.saf-close {
-  height: 5%;
-  width: 20%;
-  padding: 0 10px;
-  margin: .5rem auto;
-  text-transform: uppercase;
-  font-size: .7rem;
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-weight: 700;
-  color: white;
-  background-color: #e16d00;
-  border: none;
-  border-radius: .6rem;
-  text-align: center;
-  line-height: 2;
-}
-.saf-close:hover {
-  background-color: #ff8b1e;
 }
 /* kết thúc search-and-filter */
 
@@ -377,6 +544,7 @@ header, main, footer {
   background: rgb(237,237,233);
   background: linear-gradient(90deg, rgba(237,237,233,0.9) 0%, rgba(245,235,224,0.98) 70%, rgba(227,213,202,0.95) 100%);
   box-shadow: 0 12px 18px 0 rgba(0,0,0,0.6);
+  z-index: 11;
 }
 .first-details-container {
   width: 30%;
@@ -617,6 +785,7 @@ header, main, footer {
   text-decoration-color: #2b0f42;
 }
 /* kết thúc phần phân trang */
+
 /* bắt đầu phần well-known */
 .well-known {
   height: auto;
@@ -846,6 +1015,7 @@ header, main, footer {
   background-color: #f3ede8;
 }
 /* kết thúc phần header */
+
 /* bắt đầu phần footer */
 .footer {
   height: auto;
@@ -1005,6 +1175,37 @@ header, main, footer {
   
 }
 @media  screen and (max-width: 768px) {
+  /* Signin section */
+  .signin-header h1 {
+    font-size: 1.15rem;
+  }
+  .signin-close-button {
+    width: 1.8rem;
+    height: 1.8rem;
+    font-size: 1.8rem;
+  }
+  .signin-column-one > label {
+    font-size: .85rem;
+    font-weight: 600;
+    font-family: "Open Sans", sans-serif;
+    height: 2rem;
+    line-height: 2;
+  }
+  .signin-column-two > input {
+    height: 1.95rem;
+    box-sizing: border-box;
+    margin: .2rem 0 .2rem auto;
+    font-size: .8rem;
+  }
+  .signin-footer > button {
+    height: 2rem;
+    font-size: .975rem;
+  }
+  .signin-footer > p {
+    font-size: .85rem;
+  }
+  /* Signin section */
+
   .normal-box {
     width: 80%;
   }
@@ -1080,6 +1281,37 @@ header, main, footer {
   
 }
 @media  screen and (max-width: 480px) {
+  /* Signin section */
+  .signin-header h1 {
+    font-size: 1.1rem;
+  }
+  .signin-close-button {
+    width: 1.8rem;
+    height: 1.8rem;
+    font-size: 1.8rem;
+  }
+  .signin-column-one > label {
+    font-size: .725rem;
+    font-weight: 600;
+    font-family: "Open Sans", sans-serif;
+    height: 2rem;
+    line-height: 2;
+  }
+  .signin-column-two > input {
+    height: 1.95rem;
+    box-sizing: border-box;
+    margin: .2rem 0 .2rem auto;
+    font-size: .7rem;
+  }
+  .signin-footer > button {
+    height: 1.8rem;
+    font-size: .9rem;
+  }
+  .signin-footer > p {
+    font-size: .7rem;
+  }
+  /* Signin section */
+
   .normal-box {
     width: 100%;
   }
