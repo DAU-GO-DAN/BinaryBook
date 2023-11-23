@@ -24,9 +24,13 @@
 	<div class="invoice-background">
 		<div class="table-invoice">
 			<div class="invoice-search-input" >
-				<input type="text" class="form-control" placeholder="Tìm kiếm">
+				<input type="text" class="form-control" id="name" placeholder="Tìm kiếm">
 				<input type="date" class="form-control">
-				<button class="invoice-btn-search " style="background-color: none;" type="button" onclick="showbilllist()">
+				<select class="form-control" id="statussearch">
+					<option value="Chưa xử lý">Chưa xử lý</option>
+					<option value="Đã xử lý">Đã xử lý</option>
+				</select>
+				<button class="invoice-btn-search" style="background-color: none;" type="button" onclick="searchBill()">
 					<img src="../images/search.png" alt="" class="invoice-search">
 				</button>
 			</div>
@@ -44,6 +48,10 @@
 					</tr>
 				</tbody>
 			</table>
+		</div>
+		<div id="modal1" class="modal">
+			<div id="info">
+			</div>
 		</div>
 	</div>
 	<script src="../js/invoice.js"></script>
