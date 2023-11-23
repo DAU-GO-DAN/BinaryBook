@@ -791,7 +791,8 @@ td {
 @media only screen and (min-width: 0) and (max-width: 600px){
 	
 	#leftmenu {
-		display: none;
+		display: block;
+		width: 70px;
 	}
 
 

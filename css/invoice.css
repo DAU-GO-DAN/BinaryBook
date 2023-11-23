@@ -1,0 +1,82 @@
+.invoice-background{
+    background-color: rgb(175, 175, 175);
+    border: 1px solid rgb(77, 59, 59);
+    height: 100vh   ;
+}
+.table-invoice{
+    margin-left: 260px ;
+    margin-right: 10px;
+    margin-top: 10px;
+    height: 97vh;
+    background-color: white;
+}
+/* Thêm đường viền cho input và làm tròn góc */
+.form-control {
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+}
+
+/* Thêm hiệu ứng hover cho input và button */
+/* .form-control:hover, */
+/* .invoice-btn-search:hover {
+    border-color: #555;
+} */
+.invoice-search-input{
+    display: flex;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+/* Căn giữa nút search */
+.invoice-btn-search {
+    background: none;
+    cursor: pointer;
+}
+.invoice-search{
+    width: 20px;
+    height: auto;
+}
+
+/* Định dạng bảng */
+.table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    
+}
+
+/* Định dạng header của bảng */
+th {
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+/* Định dạng dòng xen kẽ */
+tbody tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+/* Hiệu ứng hover cho dòng */
+tbody tr:hover {
+    background-color: #e6e6e6;
+}
+
+/* Định dạng nội dung trong bảng */
+td, th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+@media only screen and (min-width: 0) and (max-width: 1149px){
+    .table-invoice{
+        margin-left: 80px ;
+        margin-right: 10px;
+        margin-top: 10px;
+        height: 97vh;
+        background-color: white;
+        font-size: 14px;
+    }
+}
