@@ -1094,8 +1094,8 @@ header, main, footer {
   height: 1rem;
   width: 1rem;
   position: fixed;
-  bottom: 2.5rem;
-  left: 2rem;
+  bottom: 4rem;
+  right: 2rem;
   z-index: 1;
 }
 .gift-icon {
