@@ -371,26 +371,28 @@ const isValidPassword = (password) => {
 // Hàm để định dạng số nguyên thành chuỗi giá tiền
 const intToPriceString = (priceInt) =>
   priceInt.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " đ";
+// Hàm chuyển đổi chuỗi giá tiền sang số nguyên
 // Loại bỏ ký hiệu tiền tệ và dấu chấm, sau đó chuyển đổi chuỗi thành số nguyên
 const priceStringToInt = (priceString) =>
   parseInt(priceString.replace(" đ", "").replace(/\./g, ""));
-// Hàm tạo một div product cho một sản phẩm book
+// Hàm tạo một div .product cho một sản phẩm book
 const createProductDiv = (book) => {
-  // tao div product (div bao quat ben ngoai)
+  // Tạo div .product (div bao quát bên ngoài)
   const productDiv = document.createElement("div");
   productDiv.classList.add("product");
   productDiv.id = book.id; // Thêm id của sách vào div.product
-  // tao div product-img
+
+  //Tạo div .product-img
   const productImg = document.createElement("div");
   productImg.classList.add("product-image");
   productImg.innerHTML = `<img src="${book.image}" alt="${book.title}" />`;
 
-  // tao h2 book-title
+  // Tạo h2 .book-title
   const productTitle = document.createElement("h2");
   productTitle.classList.add("book-title");
   productTitle.innerText = book.title;
 
-  // tao h3 author
+  // Tạo h3 .author
   const productAuthors = document.createElement("h3");
   productAuthors.classList.add("author");
   for (let i = 0; i < book.authors.length - 1; ++i) {
@@ -398,21 +400,24 @@ const createProductDiv = (book) => {
   }
   productAuthors.append(book.authors[book.authors.length - 1]);
 
-  // tao div price
+  // Tạo div .price
   const productPrice = document.createElement("div");
   productPrice.classList.add("price");
 
+  // Giá cũ
   const oldPrice = document.createElement("h4");
   oldPrice.classList.add("old-price");
   oldPrice.append(intToPriceString(book.oldPrice));
 
+  // Giá mới
   const newPrice = document.createElement("h4");
   newPrice.classList.add("new-price");
   newPrice.append(intToPriceString(book.newPrice));
 
+  // Thêm giá vào .price
   productPrice.append(oldPrice, newPrice);
 
-  // tao nut button add-to-cart
+  // Tạo nút .add-to-cart
   const addToCartIcon = document.createElement("ion-icon");
   addToCartIcon.classList.add("cart-icon");
   addToCartIcon.setAttribute("name", "cart");
@@ -425,18 +430,21 @@ const createProductDiv = (book) => {
   const addToCart = document.createElement("button");
   addToCart.append(addToCartIcon, addToCartSpan);
   addToCart.classList.add("add-to-cart");
+  // Sự kiện cho nút "Thêm vào giỏ"
   addToCart.addEventListener("click", () => {
+    // Nếu chưa đăng nhập thì:
     if (!localStorage.getItem("activeUser")) {
       alert("Bạn phải đăng nhập để mua hàng!");
       return;
     }
 
+    // Nếu đã đăng nhập:
     let cart = [];
     if (localStorage.getItem("cart"))
       cart = JSON.parse(localStorage.getItem("cart"));
 
     addedBook = book;
-    // Kiểm tra nếu đã có sản phẩm này trong giỏ hàng
+    // Kiểm tra nếu đã có sản phẩm này trong giỏ hàng rồi
     if (cart.some((book) => JSON.stringify(book) === JSON.stringify(addedBook)))
       alert("Bạn đã thêm sản phẩm này vào giỏ từ trước rồi :))");
     else {
@@ -448,7 +456,7 @@ const createProductDiv = (book) => {
     }
   });
 
-  // them cac thanh phan vao div bao quat
+  // Thêm các thành phần trên vào div bao quát sản phẩm .product
   productDiv.append(
     productImg,
     productTitle,
@@ -457,7 +465,7 @@ const createProductDiv = (book) => {
     addToCart
   );
 
-  // tra ve div bao quat
+  // Trả về div bao quát
   return productDiv;
 };
 // Hàm để thêm sách vào vùng chứa
@@ -472,9 +480,9 @@ const displayPage = (containerSelector, books) => {
   const productsContainer = document.querySelector(
     containerSelector + " .products"
   );
-  productsContainer.innerHTML = ""; // Xóa sách trang hiện tại
+  productsContainer.innerHTML = ""; // Xóa sách của trang hiện tại
   for (let book of books) {
-    productsContainer.append(createProductDiv(book)); // Thêm sách mới
+    productsContainer.append(createProductDiv(book)); // Thêm sách mới vào
   }
 };
 // Hàm để phân trang cho một vùng chứa sản phẩm
@@ -507,7 +515,7 @@ const paginate = (containerSelector, books, booksPerPage) => {
 
       displayPage(containerSelector, pages[i]);
     });
-    pagination.appendChild(link); // Thêm liên kết phân trang vào
+    pagination.append(link); // Thêm liên kết phân trang vào
   }
 
   // Hiển thị trang đầu tiên
@@ -516,16 +524,16 @@ const paginate = (containerSelector, books, booksPerPage) => {
 };
 // Hàm hiển thị sách lên trang web
 const showProducts = () => {
-  // Thêm sách vào vùng chứa best-seller-----------------
+  // Thêm sách vào vùng chứa best-seller
   const bestSellerBooks = JSON.parse(localStorage.getItem("bestSellerBooks"));
   addBooksToContainer(".best-seller .products", bestSellerBooks);
 
-  // Thêm sách vào vùng chứa well-known--------------------
+  // Thêm sách vào vùng chứa well-known
   const wellKnownBooks = JSON.parse(localStorage.getItem("wellKnownBooks"));
   addBooksToContainer(".well-known .products", wellKnownBooks);
 
   // PHẦN NÀY ĐỂ PHÂN TRANG
-  const width = window.innerWidth;
+  const width = window.innerWidth; // Độ rộng màn hình
   let currentPage = 0; // Biến để lưu trữ trang hiện tại
   let booksPerPage = 8; // Số sách tối đa cho mỗi trang
   if (width < 480) {
@@ -535,7 +543,7 @@ const showProducts = () => {
   } else if (width < 1024) {
     booksPerPage = 6;
   }
-  // Thay đổi số sách cho phù hợp với kích thước màn hình
+  // Thay đổi số sách cho phù hợp khi kích thước màn hình thay đổi
   window.addEventListener("resize", () => {
     const width = window.innerWidth;
     if (width <= 480) booksPerPage = 3;
@@ -551,7 +559,6 @@ const showProducts = () => {
   // Phân trang cho bestSellerBooks và wellKnownBooks
   paginate(".best-seller", bestSellerBooks, booksPerPage);
   paginate(".well-known", wellKnownBooks, booksPerPage);
-  //----------------------------end
 };
 
 // PHẦN NÀY ĐỂ HIỂN THỊ SUBHEADER VÀ LINKCOLUMN CHO TRANG WEB
@@ -584,6 +591,8 @@ const createSubheader = () => {
     nav.append(subheaderItemLink);
 
     // Thêm sự kiện khi click
+    // Khi click vào một mục trên subheader,
+    // chuyển đến phần lọc sản phẩm với category tương ứng
     subheaderItemLink.addEventListener("click", (event) => {
       event.preventDefault();
 
@@ -613,7 +622,7 @@ const createLinkColumn = () => {
     ["Đơn vị liên kết", "#"],
     ["Cài đặt cookie", "#"],
     ["Sơ đồ trang web", "#"],
-    ["Chính sách về Quyền riêng tư", "#"],
+    ["Chính sách Quyền riêng tư", "#"],
   ];
   const linkColumnItemsContainer = document.querySelector(".link-column");
   // Thêm các mục vào link-column
@@ -630,6 +639,7 @@ const createLinkColumn = () => {
 };
 
 // HÀM NÀY ĐỂ THÊM SỰ KIỆN XEM THÊM THÔNG TIN SÁCH KHI NGƯỜI DÙNG CLICK VÀO ẢNH
+// NOTE: ctn được đặt là ".main"
 const addShowMoreDetailsEvent = (ctn) => {
   const bestSellerBooks = JSON.parse(localStorage.getItem("bestSellerBooks"));
   const wellKnownBooks = JSON.parse(localStorage.getItem("wellKnownBooks"));
@@ -637,6 +647,7 @@ const addShowMoreDetailsEvent = (ctn) => {
   const container = document.querySelector(ctn);
   container.addEventListener("click", (event) => {
     const img = event.target.closest(".product-image");
+    // Nếu người dùng click vào ảnh:
     if (img) {
       document.querySelector(".hide-screen").style.display = "block";
       const product = img.closest(".product");
@@ -673,8 +684,9 @@ const addShowMoreDetailsEvent = (ctn) => {
       const moreDetails = document.createElement("div");
       moreDetails.classList.add("details", "normal-box");
       moreDetails.append(firstDetailsContainer, secondDetailsContainer);
-      container.append(moreDetails); // hiển thị nó
+      container.append(moreDetails); // Hiển thị thêm thông tin về sách
 
+      // Đóng khi click close-button
       closeBtn.addEventListener("click", () => {
         moreDetails.remove();
         document.querySelector(".hide-screen").style.display = "none";
@@ -683,7 +695,7 @@ const addShowMoreDetailsEvent = (ctn) => {
   });
 };
 
-// PHẦN NÀY CHO CHỨC NĂNG TÌM KIẾM
+// PHẦN NÀY CHO CHỨC NĂNG TÌM KIẾM (VÀ LỌC) SÁCH
 // Hàm tìm kiếm sách theo từ khóa, loại và khoảng giá
 const searchBooks = (
   keyword,
@@ -695,13 +707,22 @@ const searchBooks = (
   const wellKnownBooks = JSON.parse(localStorage.getItem("wellKnownBooks"));
   fromPrice = parseInt(fromPrice);
   toPrice = parseInt(toPrice);
+
+  // Tất cả sách
   const allBooks = [...bestSellerBooks, ...wellKnownBooks];
-  let filteredBooks = allBooks; // Đổi tên biến lọc theo category thành filteredBooks
+
+  // Sách đã lọc
+  let filteredBooks = allBooks;
+
+  // Nếu người dùng có chọn một category cụ thể
+  // thì đầu tiên lọc theo category đó
   if (category !== "all") {
     filteredBooks = allBooks.filter((book) => {
       return book.category === category;
     });
-  }
+  } // nếu không thì không cần lọc
+
+  // Trả về các sách theo từ khóa và khoảng giá
   return filteredBooks.filter(
     (book) =>
       (book.title.toLowerCase().includes(keyword.toLowerCase()) ||
@@ -755,6 +776,7 @@ const showSearchResults = (books) => {
     <input class="filter-price" type="number" min="0" id="from-price" placeholder="Từ (VNĐ)">—
     <input class="filter-price" type="number" min="0" id="to-price" placeholder="Đến (VNĐ)">`;
 
+  // Thêm sự kiện khi người dùng thực hiện tìm kiếm trên trang kkếtquar tìm kiếm
   searchForm.addEventListener("submit", (event) => {
     event.preventDefault();
     const keyword = searchForm.querySelector(".input-search").value;
@@ -766,10 +788,11 @@ const showSearchResults = (books) => {
       toPrice = "999999999";
     }
 
+    // Tìm kiếm sách
     const books = searchBooks(keyword, category, fromPrice, toPrice);
 
-    showSearchResults(books);
-    searchResults.remove();
+    showSearchResults(books); // Mở trang kết quả tìm kiếm mới
+    searchResults.remove(); // Đóng trang kết quả tìm kiếm cũ
   });
 
   const safArea = document.createElement("div");
@@ -829,6 +852,7 @@ const signin = (event) => {
     errorsArea.style.display = "none";
   }
 
+  // Kiểm tra nếu thông tin đăng nhập không đúng
   const users = JSON.parse(localStorage.getItem("users"));
   for (let user of users)
     if (username === user.username && password === user.password) {
@@ -916,6 +940,7 @@ const signup = (event) => {
     "section.signin-section.normal-box"
   );
 
+  // Vùng hiển thị lỗi
   const errorsArea = signupSection.querySelector(".show-errors");
 
   const fullName = signupSection.querySelector("#fullName").value;
@@ -961,7 +986,7 @@ const signup = (event) => {
     const invalidPhoneNumber = document.createElement("li");
     invalidPhoneNumber.id = "invalid-phone-number";
     invalidPhoneNumber.innerHTML =
-      '<ion-icon name="alert-circle-outline" class="error-icon"></ion-icon>Số điện thoại không hợp lệ! Xin lưu ý rằng bạn không thể vượt qua lớp bảo mật của chúng tôi bằng cách nhập một số điện thoại di động không tồn tại ở Việt Nam!!!';
+      '<ion-icon name="alert-circle-outline" class="error-icon"></ion-icon>Số điện thoại không hợp lệ!';
 
     errorsArea.append(invalidPhoneNumber);
     errorsArea.style.display = "block";
@@ -1024,7 +1049,7 @@ const signup = (event) => {
     const invalidRepassword = document.createElement("li");
     invalidRepassword.id = "invalid-repassword";
     invalidRepassword.innerHTML =
-      '<ion-icon name="alert-circle-outline" class="error-icon"></ion-icon>Mật khẩu xác nhận không đúng!';
+      '<ion-icon name="alert-circle-outline" class="error-icon"></ion-icon>Mật khẩu xác nhận không khớp!';
 
     errorsArea.append(invalidRepassword);
     errorsArea.style.display = "block";
@@ -1143,7 +1168,7 @@ const showSignupSection = () => {
 };
 
 // PHẦN NÀY CHO GIỎ HÀNG VÀ LỊCH SỬ ĐẶT HÀNG
-// Hàm để hiển thị giỏ hàng
+// Hàm để hiển thị giỏ hàng và lịch sử đặt hàng
 const showCartSection = () => {
   // close button
   const closeBtn = document.createElement("button");
@@ -1366,7 +1391,7 @@ const showCartSection = () => {
 
       // xóa cart và cập nhật lại màn hình
       alert(
-        "Đặt hàng thành công! Đơn hàng của bạn sẽ được phê duyệt trong 1 giờ. Cảm ơn bạn đã tin tưởng BinaryBook <3!!!"
+        "Đặt hàng thành công! Đơn hàng sẽ được phê duyệt trong 1 giờ. Cảm ơn bạn đã tin tưởng BinaryBook <3!!!"
       );
       localStorage.removeItem("cart");
       cartSection.remove();
@@ -1457,7 +1482,7 @@ const showCartSection = () => {
   });
 };
 
-// PHẦN NÀY ĐỂ KIỂM TRA ĐĂNG NHẬP
+// PHẦN NÀY ĐỂ KIỂM TRA ĐĂNG NHẬP ĐỂ ĐIỀU CHỈNH MỘT SỐ NỘI DUNG
 const checkSignin = () => {
   const getActiveUser = localStorage.getItem("activeUser");
   const headerNav = document.querySelector(".header-nav-area");
@@ -1525,7 +1550,7 @@ const checkSignin = () => {
       }
     }
     if (settings) {
-      window.location.href = "admin/management.html";
+      window.location.href = "admin/product.html";
     }
   });
 
@@ -1579,10 +1604,6 @@ const checkSignin = () => {
   });
 };
 
-// GỌI CÁC HÀM CẦN THIẾT
-createProducts();
-createAdmin();
-
 // PHẦN NÀY ĐỂ HIỂN THỊ SLIDESHOW
 let slideshowImgIdx = 1;
 const slideshowContainer = document.querySelector(".slideshow");
@@ -1597,7 +1618,7 @@ const changeImg = () => {
   setTimeout(changeImg, 3000);
 };
 
-// PHẦN NÀY ĐỂ THAY ĐỔI TRÊN header-nav-area
+// PHẦN NÀY ĐỂ THAY ĐỔI TRÊN header-nav-area KHI KÍCH THƯỚC MÀN HÌNH THAY ĐỔI
 const changeHeaderNavArea = () => {
   window.addEventListener("resize", () => {
     if (!document.querySelector("#signin")) return;
@@ -1624,6 +1645,8 @@ if (width <= 1024 && signinId.classList.contains("signin")) {
 
 // ONLOAD
 window.onload = () => {
+  createProducts();
+  createAdmin();
   showProducts();
   createSubheader();
   createLinkColumn();

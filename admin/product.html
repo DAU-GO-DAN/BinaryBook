@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản lý sản phẩm</title>
+    <link rel="stylesheet" href="../styles/admin.css" />
+    <link rel="shortcut icon" href="../images/logo.jpg" />
+  </head>
+
+  <body onLoad="showProductList(0);hello()">
+    <div id="wrap">
+      <div id="leftmenu" class="">
+        <div class="logo">
+          <a href=""><img src="../images/logo.jpg" alt="BinaryBook" /></a>
+        </div>
+        <ul>
+          <li>
+            <img src="../images/home.svg" /><a href="../index.html"
+              >Trang chủ</a
+            >
+          </li>
+          <li>
+            <img src="../images/book.svg" /><a href="./product.html"
+              >Sản phẩm</a
+            >
+          </li>
+          <li>
+            <img src="../images/bill.svg" /><a href="./invoice.html">Hóa đơn</a>
+          </li>
+          <li>
+            <img src="../images/customer.svg" /><a href="user.html"
+              >Khách hàng</a
+            >
+          </li>
+        </ul>
+        <div id="account">
+          <div id="hello"></div>
+        </div>
+      </div>
+      <div id="content">
+        <div id="topmenu">
+          <div class="logo">
+            <img src="../images/logo.jpg" alt="BinaryBook" />
+          </div>
+          <ul>
+            <div class="list1">
+              <li>
+                <img src="../images/home.svg" /><a href="../index.html"
+                  >Trang chủ</a
+                >
+              </li>
+              <li>
+                <img src="../images/book.svg" /><a href="./product.html"
+                  >Sản phẩm</a
+                >
+              </li>
+            </div>
+            <div class="list2">
+              <li>
+                <img src="../images/bill.svg" /><a href="./invoice.html"
+                  >Hóa đơn</a
+                >
+              </li>
+              <li>
+                <img src="../images/customer.svg" /><a href="user.html"
+                  >Khách hàng</a
+                >
+              </li>
+            </div>
+          </ul>
+          <div id="accounttop">
+            <div id="hellotop"></div>
+          </div>
+        </div>
+        <div id="title">
+          <img class="book-title" src="../images/book.png" alt="BookImage" />
+          <h1>QUẢN LÝ SẢN PHẨM</h1>
+        </div>
+        <div id="rightsection">
+          <div class="search-bar">
+            <form
+              class="search-form"
+              onkeyup="searchproduct()"
+              onchange="searchproduct()"
+            >
+              <div class="search-list">
+                <label for="searchproductname">Tìm kiếm</label>
+                <input type="text" id="searchproductname" />
+              </div>
+              <div class="search-list">
+                <label for="searchproductcategory">Thể loại</label>
+                <select id="searchproductcategory">
+                  <option value="all" selected>Tất cả</option>
+                  <option value="python" selected>Python</option>
+                  <option value="java">Java</option>
+                  <option value="design-pattern">Design-Pattern</option>
+                  <option value="dsa">DSA</option>
+                  <option value="ooad">OOAD</option>
+                  <option value="c/cpp">C/Cpp</option>
+                  <option value="spring">Spring</option>
+                  <option value="database">Database</option>
+                  <option value="javascript">Javascript</option>
+                  <option value="regex">Regex</option>
+                  <option value="typescript">Typescript</option>
+                  <option value="csharp">CSharp</option>
+                  <option value="css">Css</option>
+                  <option value="angular">Angular</option>
+                </select>
+              </div>
+            </form>
+            <div class="add-btn">
+              <button onclick="showAddProduct()">
+                <ion-icon class="add-icon" name="add-circle-outline"></ion-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div id="leftsection">
+          <div id="maintable">
+            <h1>DANH SÁCH SẢN PHẨM</h1>
+            <table id="productlist"></table>
+            <div id="pagination"></div>
+          </div>
+        </div>
+      </div>
+      <div id="modal1" class="modal">
+        <div id="changeproduct">
+          <button class="close" onclick="closechangebox()">
+            <ion-icon
+              name="close-circle-outline"
+              style="font-size: 30px"
+            ></ion-icon>
+          </button>
+          <div class="image">
+            <img id="imgbefore" src="" value="" />
+            <img id="imgafter" src="" value="" />
+          </div>
+          <div class="info">
+            <label for="productId">Mã sản phẩm</label>
+            <input type="text" id="productId" />
+            <label for="productname">Tên sản phẩm</label>
+            <input type="text" id="productname" />
+            <label for="category">Phân loại</label>
+            <select id="category">
+              <option value="python" selected>Python</option>
+              <option value="java">Java</option>
+              <option value="design-pattern">Design-Pattern</option>
+              <option value="dsa">DSA</option>
+              <option value="ooad">OOAD</option>
+              <option value="c/cpp">C/Cpp</option>
+              <option value="spring">Spring</option>
+              <option value="database">Database</option>
+              <option value="javascript">Javascript</option>
+              <option value="regex">Regex</option>
+              <option value="typescript">Typescript</option>
+              <option value="csharp">CSharp</option>
+              <option value="css">Css</option>
+              <option value="angular">Angular</option></select
+            ><br />
+            <label for="authors">Tác giả</label>
+            <input type="text" id="authors" />
+            <div id="priceContainer">
+              <div class="priceList">
+                <label class="priceLable1" for="originPrice">Giá gốc</label>
+                <input
+                  class="priceItem"
+                  type="text"
+                  id="originPrice"
+                  value=""
+                />
+              </div>
+              <div class="priceList">
+                <label class="priceLabel" for="salePrice">Giá giảm</label>
+                <input class="priceItem" type="text" id="salePrice" value="" />
+              </div>
+            </div>
+            <div id="description">
+              <div>
+                <label for="pubCompany">Nhà Phát Hành</label>
+                <input class="" type="text" id="pubCompany" value=""">
+                <span>
+                  <label for="pageNum">Số trang</label>
+                  <input class="desInput" type="text" id="pageNum" value=""">
+                </span>
+                <span>
+                  <label class="desLabel" for=" pubYear">Năm phát hành</label>
+                  <input class="desInput" type="text" id="pubYear" value=""">
+                </span>
+              </div>
+            </div>
+            <label>Ảnh</label>
+            <input type="file" onchange="changeimg(this)" /><br />
+            <button id="save">Lưu</button>
+          </div>
+        </div>
+      </div>
+      <div id="modal2" class="modal">
+        <div id="addForm">
+          <button class="close" onclick="closechangebox()">
+            <ion-icon
+              name="close-circle-outline"
+              style="font-size: 30px"
+            ></ion-icon>
+          </button>
+          <div class="image">
+            <img id="imgadd" src="../images/temp2.jpg" value="" />
+          </div>
+          <div class="info">
+            <form>
+              <div id="priceContainer">
+                <label for="newId">Mã sản phẩm</label>
+                <span>
+                  <input
+                    class="desInput"
+                    type="radio"
+                    id="wkId"
+                    name="typeId"
+                    value="wk"
+                    checked="true"
+                  />
+                  <label class="priceLabel" for="">WK</label>
+                </span>
+                <span>
+                  <input
+                    class="desInput"
+                    type="radio"
+                    id="bsId"
+                    name="typeId"
+                    value="bs"
+                  />
+                  <label class="priceLabel" for="bsId">BS</label>
+                </span>
+              </div>
+              <label for="newName">Tên sản phẩm</label>
+              <input type="text" id="newName" />
+              <label for="newCategory">Phân loại</label>
+              <select id="newCategory">
+                <option value="python" selected>Python</option>
+                <option value="java">Java</option>
+                <option value="design-pattern">Design-Pattern</option>
+                <option value="dsa">DSA</option>
+                <option value="ooad">OOAD</option>
+                <option value="c/cpp">C/Cpp</option>
+                <option value="spring">Spring</option>
+                <option value="database">Database</option>
+                <option value="javascript">Javascript</option>
+                <option value="regex">Regex</option>
+                <option value="typescript">Typescript</option>
+                <option value="csharp">CSharp</option>
+                <option value="css">Css</option>
+                <option value="angular">Angular</option></select
+              ><br />
+              <label for="newAuthors">Tác giả</label>
+              <input type="text" id="newAuthors" />
+              <div id="priceContainer">
+                <div class="priceList">
+                  <label class="priceLable1" for="newOriginPrice"
+                    >Giá gốc</label
+                  >
+                  <input
+                    class="priceItem"
+                    type="text"
+                    id="newOriginPrice"
+                    value=""
+                  />
+                </div>
+                <div class="priceList">
+                  <label class="priceLabel" for="newSalePrice">Giá giảm</label>
+                  <input
+                    class="priceItem"
+                    type="text"
+                    id="newSalePrice"
+                    value=""
+                  />
+                </div>
+              </div>
+
+              <div id="description">
+                <div>
+                  <label for="newPubCompany">Nhà Phát Hành</label>
+                  <input class="" type="text" id="newPubCompany" value=""">
+                </div>
+                <span>
+                  <label for="newPageNum">Số trang</label>
+                  <input class="desInput" type="text" id="newPageNum" value=""">
+                </span>
+                <span>
+                  <label class="desLabel" for="newPubYear">Năm phát hành</label>
+                  <input class="desInput" type="text" id="newPubYear" value=""">
+                </span>
+              </div>
+              <label>Ảnh</label>
+              <input type="file" onchange="changeimgadd(this)" /><br />
+              <div class="group-add">
+                <button type="reset">Xóa</button>
+                <button type="button" onclick="addProduct()">Thêm</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="customalert"></div>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="../scripts/admin.js"></script>
+  </body>
+</html>
