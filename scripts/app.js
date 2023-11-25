@@ -1550,7 +1550,7 @@ const checkSignin = () => {
       }
     }
     if (settings) {
-      window.location.href = "admin/management.html";
+      window.location.href = "admin/product.html";
     }
   });
 

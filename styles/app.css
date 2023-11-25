@@ -572,7 +572,8 @@ header, main, footer {
   align-items: center;
 
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.6);
-  background-color: #ffd15d;
+  background: rgb(255,216,227);
+  background: linear-gradient(45deg, rgba(255,216,227,1) 0%, rgba(255,240,216,1) 35%, rgba(224,255,218,1) 70%, rgba(187,244,255,1) 100%);
   }
 .filter {
   box-sizing: border-box;
