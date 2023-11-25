@@ -72,7 +72,7 @@ function changeStatus(checkbox,id){
 			}
 		}
 		status.innerHTML="Đã xử lý";
-		status.style.color = 'blue';
+		status.style.color = 'green';
 	}else {
 		for (var i = 0; i < invoices.length; i++) {
       var invoice = invoices[i];  
@@ -91,7 +91,65 @@ function closeinfobill(){
 	document.getElementById('modal1').style.display = 'none';
 }
 
+// document.getElementById('name').addEventListener('input', function() {
+//   searchBill();
+// });
+
+// function searchBill() {
+//   var invoices = JSON.parse(localStorage.getItem('bills'));
+//   var status = document.getElementById('statussearch').value;
+//   var table = document.getElementById('table-body');
+//   var inputName = document.getElementById('name').value.toLowerCase();
+//   var nameWithoutAccents = removeAccents(inputName);
+//   var nameKeywords = nameWithoutAccents.split(' ');
+
+//   var invoicesTemp = [];
+
+//   for (var i = 0; i < invoices.length; i++) {
+//     var invoice = invoices[i];
+//     var customerNameWithoutAccents = removeAccents(invoice.customer.fullName.toLowerCase());
+
+//     var isMatch = true;
+//     // Kiểm tra từng từ trong từ khóa tìm kiếm
+//     for (var j = 0; j < nameKeywords.length; j++) {
+//       var keyword = nameKeywords[j];
+//       if (!customerNameWithoutAccents.includes(keyword)) {
+//         isMatch = false;
+//         break; // Nếu một từ không khớp, thoát khỏi vòng lặp
+//       }
+//     }
+
+//     if (status == invoice.status && isMatch) {
+//       invoicesTemp.push(invoice);
+//     }
+//   }
+
+//   var row = '';
+//   for (var i = 0; i < invoicesTemp.length; i++) {
+//     var invoiceTemp = invoicesTemp[i];
+//     var statusColor = (invoiceTemp.status === 'Chưa xử lý') ? 'red' : 'green';
+
+//     row += '<tr onClick="showinfobill(' + invoiceTemp.id + ')">' +
+//       '<td>' + invoiceTemp.orderDate + '</td>' +
+//       '<td>' + invoiceTemp.customer.fullName + '</td>' +
+//       '<td>' + currency(invoiceTemp.finalTotalCost) + '</td>' +
+//       '<td style="color: ' + statusColor + '">' + invoiceTemp.status + '</td>' +
+//       '</tr>';
+//   }
+
+//   table.innerHTML = row;
+// }
+
+// function removeAccents(str) {
+//   str = str.replace(/đ/g, 'd');
+//   return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+// }
 document.getElementById('name').addEventListener('input', function() {
+  searchBill();
+});
+
+// Bắt sự kiện khi giá trị của dropdown thay đổi
+document.getElementById('statussearch').addEventListener('change', function() {
   searchBill();
 });
 
@@ -109,17 +167,23 @@ function searchBill() {
     var invoice = invoices[i];
     var customerNameWithoutAccents = removeAccents(invoice.customer.fullName.toLowerCase());
 
-    var isMatch = true;
-    // Kiểm tra từng từ trong từ khóa tìm kiếm
+    var isNameMatch = true;
+    // Check each keyword in the search
     for (var j = 0; j < nameKeywords.length; j++) {
       var keyword = nameKeywords[j];
       if (!customerNameWithoutAccents.includes(keyword)) {
-        isMatch = false;
-        break; // Nếu một từ không khớp, thoát khỏi vòng lặp
+        isNameMatch = false;
+        break; // If one keyword doesn't match, exit the loop
       }
     }
 
-    if (status == invoice.status && isMatch) {
+    var isStatusMatch = true; 
+    // Check if the status matches, unless "Tất cả" is selected
+    if (status !== 'Tất cả' && status !== invoice.status) {
+      isStatusMatch = false;
+    }
+
+    if (isStatusMatch && isNameMatch) {
       invoicesTemp.push(invoice);
     }
   }
@@ -139,6 +203,7 @@ function searchBill() {
 
   table.innerHTML = row;
 }
+
 
 function removeAccents(str) {
   str = str.replace(/đ/g, 'd');
