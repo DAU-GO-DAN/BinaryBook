@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/invoice.css" />
+    <link rel="stylesheet" href="../styles/invoice2.css" />
+    <title>Quản lý hóa đơn</title>
+  </head>
+  <body onload="showbilllist()">
+    <div id="leftmenu" class="">
+      <div class="logo"><img src="../images/logo.jpg" alt="BinaryBook" /></div>
+      <ul>
+        <li>
+          <img src="../images/home.svg" /><a href="../index.html">Trang chủ</a>
+        </li>
+        <li>
+          <img src="../images/book.svg" /><a href="./product.html">Sản phẩm</a>
+        </li>
+        <li>
+          <img src="../images/bill.svg" /><a href="./invoice.html">Hóa đơn</a>
+        </li>
+        <li>
+          <img src="../images/customer.svg" /><a href="user.html">Khách hàng</a>
+        </li>
+      </ul>
+      <div id="account">
+        <div id="hello"></div>
+      </div>
+    </div>
+    <div class="invoice-background">
+      <div class="table-invoice">
+        <div class="invoice-search-input">
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            placeholder="Tìm kiếm"
+          />
+          <select class="form-control" id="statussearch">
+            <option value="Tất cả">Tất cả</option>
+            <option value="Chưa xử lý">Chưa xử lý</option>
+            <option value="Đã xử lý">Đã xử lý</option>
+          </select>
+          <button
+            class="invoice-btn-search"
+            style="background-color: none"
+            type="button"
+            onclick="searchBill()"
+          >
+            <img src="../images/search.png" alt="" class="invoice-search" />
+          </button>
+        </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Ngày</th>
+              <th scope="col">Khách hàng</th>
+              <th scope="col">Giá</th>
+              <th scope="col">Trạng thái</th>
+            </tr>
+          </thead>
+          <tbody id="table-body">
+            <tr></tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="modal1" class="modal">
+        <div id="info"></div>
+      </div>
+    </div>
+    <script src="../scripts/invoice.js"></script>
+  </body>
+</html>
