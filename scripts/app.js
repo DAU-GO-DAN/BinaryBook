@@ -696,6 +696,55 @@ const addShowMoreDetailsEvent = (ctn) => {
 };
 
 // PHẦN NÀY CHO CHỨC NĂNG TÌM KIẾM (VÀ LỌC) SÁCH
+// Hàm để hiển thị sách cho trang hiện tại
+const displaySearchPage = (books) => {
+  const productsContainer = document.querySelector(
+    ".search-and-filter .saf-products"
+  );
+  productsContainer.innerHTML = ""; // Xóa sách của trang hiện tại
+  for (let book of books) {
+    productsContainer.append(createProductDiv(book)); // Thêm sách mới vào
+  }
+};
+// Hàm để phân trang cho trang tìm kiếm
+const paginateForSearchResults = (books, booksPerPage) => {
+  // Chia mảng books thành các trang
+  const pages = [];
+  for (let i = 0; i < books.length; i += booksPerPage) {
+    pages.push(books.slice(i, i + booksPerPage));
+  }
+  // Tạo các liên kết phân trang
+  const pagination = document.querySelector(
+    ".search-and-filter .search-pagination"
+  );
+  pagination.innerHTML = ""; // Xóa liên kết phân trang hiện tại
+  for (let i = 0; i < pages.length; i++) {
+    const link = document.createElement("a");
+    link.href = "#";
+    link.innerText = i + 1;
+    link.classList.add("paginating-link");
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+
+      // Xóa kiểu CSS của trang hiện tại
+      const currentLink = pagination.querySelector(".current-page");
+      if (currentLink) {
+        currentLink.classList.remove("current-page");
+      }
+
+      // Cập nhật trang hiện tại và áp dụng kiểu CSS
+      currentPage = i;
+      link.classList.add("current-page");
+
+      displaySearchPage(pages[i]);
+    });
+    pagination.append(link); // Thêm liên kết phân trang vào
+  }
+
+  // Hiển thị trang đầu tiên
+  displaySearchPage(pages[0]);
+  pagination.querySelector(".paginating-link").classList.add("current-page"); // Áp dụng kiểu CSS cho trang đầu tiên
+};
 // Hàm tìm kiếm sách theo từ khóa, loại và khoảng giá
 const searchBooks = (
   keyword,
@@ -776,7 +825,7 @@ const showSearchResults = (books) => {
     <input class="filter-price" type="number" min="0" id="from-price" placeholder="Từ (VNĐ)">—
     <input class="filter-price" type="number" min="0" id="to-price" placeholder="Đến (VNĐ)">`;
 
-  // Thêm sự kiện khi người dùng thực hiện tìm kiếm trên trang kkếtquar tìm kiếm
+  // Thêm sự kiện khi người dùng thực hiện tìm kiếm trên trang kết quả tìm kiếm
   searchForm.addEventListener("submit", (event) => {
     event.preventDefault();
     const keyword = searchForm.querySelector(".input-search").value;
@@ -809,8 +858,13 @@ const showSearchResults = (books) => {
   // section.search-and-filter
   const searchResults = document.createElement("section");
   searchResults.classList.add("search-and-filter", "full-screen-box");
-  searchResults.append(safArea, products);
+  searchResults.innerHTML = `<nav class="search-pagination"></nav>`;
+  searchResults.prepend(safArea, products);
   document.querySelector(".main").prepend(searchResults);
+
+  if (books.length > 0) {
+    paginateForSearchResults(books, 4);
+  }
 
   // close-button
   closeBtn.addEventListener("click", () => {
