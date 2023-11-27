@@ -9,6 +9,7 @@
     margin-top: 10px;
     height: 97vh;
     background-color: white;
+    border-radius: 4px;
 }
 
 .form-control {
