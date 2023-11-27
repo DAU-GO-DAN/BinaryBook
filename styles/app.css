@@ -665,6 +665,7 @@ header, main, footer {
 }
 .close-btn {
   height: 15%;
+  max-height: 2.5rem;
   width: 100%;
   padding: 0 10px;
   text-transform: uppercase;

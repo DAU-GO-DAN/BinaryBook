@@ -7,12 +7,6 @@ function closechangebox() {
   document.getElementById("modal2").style.display = "none";
 }
 
-function hello() {
-  var user = JSON.parse(localStorage.getItem("activeUser"));
-  document.getElementById("hello").innerHTML =
-    user.fullName + '<button onclick="logout()">Đăng xuất</button>';
-}
-
 function showProductList(index) {
   var booksArray = JSON.parse(localStorage.getItem("wellKnownBooks")).concat(
     JSON.parse(localStorage.getItem("bestSellerBooks"))
@@ -177,15 +171,23 @@ function changeproduct(id) {
         bsList[i].image = "images/" + document.getElementById("imgafter").value;
         bsList[i].title = document.getElementById("productname").value;
         bsList[i].category = document.getElementById("category").value;
-        bsList[i].newPrice = document.getElementById("salePrice").value;
-        bsList[i].oldPrice = document.getElementById("originPrice").value;
+        bsList[i].newPrice = parseInt(
+          document.getElementById("salePrice").value
+        );
+        bsList[i].oldPrice = parseInt(
+          document.getElementById("originPrice").value
+        );
         var arrayResult = document.getElementById("authors").value.includes(",")
           ? document.getElementById("authors").value.split(",")
           : [document.getElementById("authors").value];
         bsList[i].authors = arrayResult;
         bsList[i].otherDetails[0] = document.getElementById("pubCompany").value;
-        bsList[i].otherDetails[1] = document.getElementById("pageNum").value;
-        bsList[i].otherDetails[2] = document.getElementById("pubYear").value;
+        bsList[i].otherDetails[1] = parseInt(
+          document.getElementById("pageNum").value
+        );
+        bsList[i].otherDetails[2] = parseInt(
+          document.getElementById("pubYear").value
+        );
         vitri = Math.floor(i / 10) * 10;
       }
       localStorage.setItem("bestSellerBooks", JSON.stringify(bsList));
@@ -197,15 +199,23 @@ function changeproduct(id) {
         wkList[i].image = "images/" + document.getElementById("imgafter").value;
         wkList[i].title = document.getElementById("productname").value;
         wkList[i].category = document.getElementById("category").value;
-        wkList[i].newPrice = document.getElementById("salePrice").value;
-        wkList[i].oldPrice = document.getElementById("originPrice").value;
+        wkList[i].newPrice = parseInt(
+          document.getElementById("salePrice").value
+        );
+        wkList[i].oldPrice = parseInt(
+          document.getElementById("originPrice").value
+        );
         var arrayResult = document.getElementById("authors").value.includes(",")
           ? document.getElementById("authors").value.split(",")
           : [document.getElementById("authors").value];
         wkList[i].authors = arrayResult;
         wkList[i].otherDetails[0] = document.getElementById("pubCompany").value;
-        wkList[i].otherDetails[1] = document.getElementById("pageNum").value;
-        wkList[i].otherDetails[2] = document.getElementById("pubYear").value;
+        wkList[i].otherDetails[1] = parseInt(
+          document.getElementById("pageNum").value
+        );
+        wkList[i].otherDetails[2] = parseInt(
+          document.getElementById("pubYear").value
+        );
         vitri = Math.floor(i / 10) * 10;
       }
       localStorage.setItem("wellKnownBooks", JSON.stringify(wkList));
@@ -323,7 +333,6 @@ function searchproduct() {
     document.getElementById("productlist").innerHTML = s;
   }
 }
-
 //----------THÊM----------//
 //Hiển thị form thêm mới sản phẩm
 function showAddProduct() {
@@ -393,12 +402,18 @@ function addProduct() {
   };
   if (productid.slice(0, 2) === "bs") {
     var bsList = JSON.parse(localStorage.getItem("bestSellerBooks"));
-    bsList.unshift(producttemp);
+    if (productid === "bs1") bsList.unshift(producttemp);
+    else {
+      bsList.splice(parseInt(productid.slice(2)) - 1, 0, producttemp);
+    }
     localStorage.setItem("bestSellerBooks", JSON.stringify(bsList));
     document.getElementById("modal2").style.display = "none";
   } else {
     var wkList = JSON.parse(localStorage.getItem("wellKnownBooks"));
-    wkList.unshift(producttemp);
+    if (productid === "wk1") wkList.unshift(producttemp);
+    else {
+      wkList.splice(parseInt(productid.slice(2)) - 1, 0, producttemp);
+    }
     localStorage.setItem("wellKnownBooks", JSON.stringify(wkList));
     document.getElementById("modal2").style.display = "none";
   }
@@ -407,12 +422,39 @@ function addProduct() {
 }
 //Tự động tạo id
 function autoCreateId(typeId) {
-  if (typeId.value === "bs") {
-    return (
-      "bs" + (JSON.parse(localStorage.getItem("bestSellerBooks")).length + 1)
-    );
+  if (typeId.value.slice(0, 2) === "bs") {
+    var newId = null;
+    var i = 1;
+    while (newId === null) {
+      newId = "bs" + i++;
+      if (checkExistId(newId)) return newId;
+      else newId = null;
+    }
+  } else {
+    var newId = null;
+    var i = 1;
+    while (newId === null) {
+      newId = "wk" + i++;
+      if (checkExistId(newId)) return newId;
+      else newId = null;
+    }
   }
-  return "wk" + (JSON.parse(localStorage.getItem("wellKnownBooks")).length + 1);
+}
+
+function checkExistId(id) {
+  var wkList = JSON.parse(localStorage.getItem("wellKnownBooks"));
+  var bsList = JSON.parse(localStorage.getItem("bestSellerBooks"));
+  if (id.slice(0, 2) === "bs") {
+    for (var i = 0; i < bsList.length; i++) {
+      if (id === bsList[i].id) return false;
+    }
+    return true;
+  } else {
+    for (var i = 0; i < wkList.length; i++) {
+      if (id === wkList[i].id) return false;
+    }
+    return true;
+  }
 }
 //----------ALERT----------//
 function customAlert(message, type) {

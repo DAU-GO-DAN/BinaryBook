@@ -23,7 +23,7 @@ body {
 }
 
 #title .book-title {
-	width: 150px;
+	width: 70px;
 	height: auto;
 	margin-right: 30px;
 }
@@ -31,10 +31,12 @@ body {
 #title>h1 {
 	align-self: center;
 	margin-top: 20px;
+	font-family: 'Agbalumo', sans-serif;
+	font-size: 32px;
 }
 
 
-#topmenu{
+#topmenu {
 	display: none;
 	justify-content: space-around;
 }
@@ -46,12 +48,12 @@ body {
 	margin: 30px 0;
 }
 
-#topmenu .logo img{
+#topmenu .logo img {
 	width: 140px;
 	height: 140px;
 }
 
-#topmenu ul{
+#topmenu ul {
 	display: flex;
 	align-items: center;
 }
@@ -94,16 +96,10 @@ body {
 	padding-left: 50px;
 }
 
-#accounttop{
-
-}
-
-#hellotop{
-
-}
 
 
-#topmenu{
+
+#topmenu {
 	width: 100vw;
 	height: 200px;
 	background: #000;
@@ -162,6 +158,7 @@ body {
 	height: 50px;
 	line-height: 50px;
 	padding-left: 50px;
+	font-family: 'IBM Plex Sans', sans-serif;;
 }
 
 
@@ -178,58 +175,6 @@ body {
 #leftmenu ul li a:hover {
 	color: #000;
 	transition: 0.2s;
-}
-
-#account {
-	background-color: #fff;
-	height: 70px;
-	display: flex;
-	align-items: center;
-	justify-content: flex-start;
-	position: relative;
-	bottom: -30%;
-}
-
-#account #hello {
-	margin-left: auto;
-	margin-right: 20px;
-	padding: 10px;
-	font-size: 14pt;
-	font-weight: bold;
-	position: relative;
-	background-color: #a4b0be;
-	border-radius: 999px;
-	display: flex;
-	align-items: flex-end;
-}
-
-#account #hello:hover button {
-	opacity: 1;
-}
-
-#account #hello button {
-	display: block;
-	text-align: center;
-	width: 100%;
-	height: 100%;
-	background-color: #2f3542;
-	border: 3px solid #2f3542;
-	color: #fff;
-	font-size: 14pt;
-	line-height: 100%;
-	position: absolute;
-	top: 0;
-	left: 0;
-	border-radius: 999px;
-	outline: none;
-	cursor: pointer;
-	opacity: 0;
-	transition: opacity 0.5s;
-}
-
-#account #hello button:active {
-	background-color: #fff;
-	color: #2f3542;
 }
 
 #maincontent {
@@ -249,9 +194,9 @@ body {
 	margin: 0 0 0 250px;
 }
 
-#content #title #menu-mini{
+#content #title #menu-mini {
 	display: none;
-	background-color: rgba(0,0,0,0.2);
+	background-color: rgba(0, 0, 0, 0.2);
 	border-radius: 10px;
 }
 
@@ -273,6 +218,7 @@ body {
 #content #leftsection #maintable h1 {
 	text-align: center;
 	margin-bottom: 20px;
+	font-family: 'Agbalumo', sans-serif;
 }
 
 #content #leftsection #maintable table,
@@ -296,7 +242,7 @@ td {
 
 #content #leftsection #maintable th {
 	background: #191919;
-	
+
 	color: #fff;
 	height: 35px;
 	padding: 0 5px;
@@ -306,6 +252,9 @@ td {
 	height: 79.4px;
 	line-height: 30px;
 	padding: 0px 10px;
+	font-family: 'IBM Plex Sans', sans-serif;
+	font-size: .9rem;
+	
 }
 
 #content #leftsection #maintable img {
@@ -407,14 +356,15 @@ td {
 	flex: 1;
 }
 
-.search-list{
+.search-list {
 	display: flex;
-    align-items: baseline;
+	align-items: baseline;
 }
 
 #content #rightsection .search-bar label {
 	font-size: 14pt;
 	cursor: pointer;
+	font-family: 'IBM Plex Sans', sans-serif;
 }
 
 #content #rightsection .search-bar input {
@@ -426,6 +376,9 @@ td {
 	border: 2px solid rgba(0, 0, 0);
 	border-radius: 15px;
 	margin: 0 20px 0 20px;
+	font-family: 'IBM Plex Sans', sans-serif;
+	text-align: center;
+	padding: 0 1rem;
 }
 
 #content #rightsection .search-bar input:focus {
@@ -440,6 +393,7 @@ td {
 	border: 2px solid rgba(0, 0, 0, .7);
 	border-radius: 5px;
 	margin: 0 0 0 20px;
+	font-family: 'IBM Plex Sans', sans-serif;
 }
 
 #content #rightsection .search-bar select:focus {
@@ -457,16 +411,16 @@ td {
 	background-color: #fff;
 }
 
-.search-icon{
+.search-icon {
 	background-color: #c0b62b;
-    font-size: 18pt;
-    color: #fff;
-    cursor: pointer;
-    width: 45px;
-    margin: 0 3px;
-    height: 45px;
-    border-radius: 22.5px;
-    line-height: 22px;
+	font-size: 18pt;
+	color: #fff;
+	cursor: pointer;
+	width: 45px;
+	margin: 0 3px;
+	height: 45px;
+	border-radius: 22.5px;
+	line-height: 22px;
 }
 
 .group-add {
@@ -483,24 +437,24 @@ td {
 	cursor: pointer;
 }
 
-.add-icon{
+.add-icon {
 	background-color: green;
-    font-size: 18pt;
-    color: #fff;
-    cursor: pointer;
-    width: 45px;
-    margin: 0 3px;
-    height: 45px;
-    border-radius: 22.5px;
-    line-height: 22px;
+	font-size: 18pt;
+	color: #fff;
+	cursor: pointer;
+	width: 45px;
+	margin: 0 3px;
+	height: 45px;
+	border-radius: 22.5px;
+	line-height: 22px;
 }
 
-.add-icon:hover{
+.add-icon:hover {
 	transition: .2s;
-	background-color: rgb(0,128,0,0.6);
+	background-color: rgb(0, 128, 0, 0.6);
 }
 
-.add-btn{
+.add-btn {
 	margin: 0 -30px;
 	align-self: center;
 }
@@ -606,7 +560,6 @@ td {
 
 #modal1 #info {
 	width: 500px;
-	height: 600px;
 	background-color: #fff;
 	margin: 20px auto;
 	position: relative;
@@ -667,40 +620,32 @@ td {
 	border-radius: 999px;
 }
 
-#modal1 #changeproduct .info .desLabel{
+#modal1 #changeproduct .info .desLabel {
 	width: 190px;
 	display: inline-block;
 	text-align: center;
 }
 
-#description .description{
+#description .description {
 	display: flex;
 }
 
-#modal1 #info .info .desLabel{
+#modal1 #info .info .desLabel {
 	width: 190px;
 	display: inline-block;
 	text-align: center;
 }
 
-#priceContainer{
-	display: inline-flex;
-}
-
-#priceContainer .priceList {
-	display: inline-flex;
-}
-
-#modal1 .info #priceContainer .priceItem{
+#modal1 .info #priceContainer .priceItem {
 	width: 150px;
 }
 
-#modal1  #priceContainer .priceLabel{
+#modal1 #priceContainer .priceLabel {
 	width: 90px;
 	margin-left: 10px;
 }
 
-#modal #priceContainer .priceLable1{
+#modal #priceContainer .priceLable1 {
 	margin-right: 4px;
 }
 
@@ -712,37 +657,28 @@ td {
 	margin-bottom: 10px;
 }
 
-#modal1 #changeproduct .info .desInput{
+#modal1 #changeproduct .info .desInput {
 	width: 101px;
 }
 
-#modal1 .info input {
-	font-size: 13pt;
-	width: 400px;
-	border: 2px solid #191919;
-	margin-bottom: 10px;
-	padding: 5px;
-	border-radius: 4px;
-}
-
-#modal1 .info #priceList{
+#modal1 .info #priceList {
 	display: inline-flex;
 }
 
-#modal1 .info #priceContainer .priceLabel{
+#modal1 .info #priceContainer .priceLabel {
 	width: 90px;
 	margin-left: 10px;
 }
 
-#modal1 .info #priceContainer .priceLable1{
+#modal1 .info #priceContainer .priceLable1 {
 	margin-right: 4px;
 }
 
-#modal1 .description{
+#modal1 .description {
 	display: flex;
 }
 
-#modal1 .desInput{
+#modal1 .desInput {
 	display: inline-block;
 }
 
@@ -764,22 +700,6 @@ td {
 
 #modal1 #info label input:checked+.slider:before {
 	left: 30px;
-}
-
-#modal1 #info .printbtn {
-	width: 100px;
-	background-color: #000;
-	color: #fff;
-	height: 25px;
-	border: 2px solid #000;
-	line-height: 25px;
-	margin-top: 10px;
-	cursor: pointer;
-}
-
-#modal1 #info .printbtn:hover {
-	background-color: #fff;
-	color: #000;
 }
 
 #modal2 #addForm {
@@ -817,17 +737,17 @@ td {
 	margin: 10px auto 0;
 }
 
-#description .description{
+#description .description {
 	display: flex;
 }
 
-#modal2 #addForm .info .desLabel{
+#modal2 #addForm .info .desLabel {
 	width: 190px;
 	display: inline-block;
 	text-align: center;
 }
 
-#priceContainer{
+#priceContainer {
 	display: inline-flex;
 }
 
@@ -836,16 +756,16 @@ td {
 	line-height: 32px;
 }
 
-#modal2 #addForm .info #priceContainer .priceItem{
+#modal2 #addForm .info #priceContainer .priceItem {
 	width: 150px;
 }
 
-#modal2 #addForm #priceContainer .priceLabel{
+#modal2 #addForm #priceContainer .priceLabel {
 	width: 90px;
 	margin-left: 10px;
 }
 
-#modal2 #addForm #priceContainer .priceLable1{
+#modal2 #addForm #priceContainer .priceLable1 {
 	margin-right: 4px;
 }
 
@@ -857,12 +777,8 @@ td {
 	margin-bottom: 10px;
 }
 
-#modal2 #addForm .info .desInput{
+#modal2 #addForm .info .desInput {
 	width: 101px;
-}
-
-#modal2 #addForm .info input{
-
 }
 
 #modal2 #addForm .info input {
@@ -874,17 +790,17 @@ td {
 	border-radius: 4px;
 }
 
-#modal2 #addFrom .info #priceList{
+#modal2 #addFrom .info #priceList {
 	display: inline-flex;
 }
 
 
 
-#modal2 #addForm .description{
+#modal2 #addForm .description {
 	display: flex;
 }
 
-#modal2 #addForm .desInput{
+#modal2 #addForm .desInput {
 	display: inline-block;
 }
 
@@ -980,18 +896,18 @@ td {
 	border-radius: 999px;
 }
 
-.modal #category{
+.modal #category {
 	border: solid 2px black;
-    border-radius: 5px;
-    height: 34px;
-    margin-bottom: 10px;
+	border-radius: 5px;
+	height: 34px;
+	margin-bottom: 10px;
 }
 
 .modal #newCategory {
-    border: solid 2px black;
-    border-radius: 5px;
-    height: 34px;
-    margin-bottom: 10px;
+	border: solid 2px black;
+	border-radius: 5px;
+	height: 34px;
+	margin-bottom: 10px;
 }
 
 #modal2 #info label .slider:before {
@@ -1013,23 +929,6 @@ td {
 #modal2 #info label input:checked+.slider:before {
 	left: 30px;
 }
-
-#modal2 #info .printbtn {
-	width: 100px;
-	background-color: #000;
-	color: #fff;
-	height: 25px;
-	border: 2px solid #000;
-	line-height: 25px;
-	margin-top: 10px;
-	cursor: pointer;
-}
-
-#modal2 #info .printbtn:hover {
-	background-color: #fff;
-	color: #000;
-}
-
 
 
 /*customalert*/
@@ -1056,24 +955,18 @@ td {
 /*ANIMATION*/
 @keyframes fadein {
 	from {
-		top: 0;
 		opacity: 0;
 	}
-
 	to {
-		top: 30px;
 		opacity: 1;
 	}
 }
 
 @keyframes fadeout {
 	from {
-		top: 30px;
 		opacity: 1;
 	}
-
 	to {
-		top: 0;
 		opacity: 0;
 	}
 }
@@ -1088,49 +981,23 @@ td {
 	}
 }
 
-@media print {
-
-	#leftmenu,
-	#nav,
-	#maincontent,
-	button {
-		display: none;
-	}
-
-	#modal2 {
-		display: block;
-	}
-
-	#modal2 #info {
-		width: 100%;
-		height: 100%;
-		margin: 0;
-	}
-
-	#modal2 #info h4:last-of-type {
-		display: none;
-	}
-
-	#modal2 #info div {
-		display: none;
-	}
-}
-
 @media only screen and (min-width: 1151px)and (max-width: 1500px) {
 	#content #leftsection {
 		width: 100%;
 	}
 
-	#content #rightsection {
-		width: 100%;
-		display: flex;
-	}
+	
+}
 
-	#content #rightsection .search-bar {
-		width: 100%;
-		padding: 10px 50px;
+#content #rightsection {
+	width: 100%;
+	display: flex;
+}
 
-	}
+#content #rightsection .search-bar {
+	width: 100%;
+	padding: 10px 50px;
+
 }
 
 @media only screen and (min-width: 1200)and (max-width: 1500px) {
@@ -1152,6 +1019,15 @@ td {
 		width: 70px;
 	}
 
+	#leftmenu ul li a::before {
+		content: "";
+		left: 11px;
+		position: absolute;
+		width: 56px;
+		height: 50px;
+		background-color: transparent;
+	}
+
 	#leftmenu ul li:hover {
 		border-right: none;
 		background: #fff;
@@ -1159,7 +1035,7 @@ td {
 		cursor: pointer;
 	}
 
-	.add-btn{
+	.add-btn {
 		padding: 30px;
 	}
 
@@ -1167,7 +1043,7 @@ td {
 		width: 100vw;
 		margin: 0 0 0 80px;
 	}
-	
+
 	#content #leftsection {
 		width: 100%;
 	}
@@ -1182,6 +1058,56 @@ td {
 		padding: 10px 50px;
 
 	}
+
+	#modal1 #changeproduct .info label {
+		width: 150px;
+	}
+
+	#modal1 #changeproduct .info input {
+		width: 335px;
+	}
+
+	#modal1 #changeproduct .info .desLabel {
+		width: 125px;
+	}
+
+	#modal1 .info #priceContainer .priceItem {
+		width: 117px;
+	}
+
+	#description {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	#modal2 #addForm .info label {
+		width: 150px;
+	}
+
+	#modal2 #addForm .info input {
+		width: 335px;
+	}
+
+	#modal2 #addForm .info .desLabel {
+		width: 125px;
+	}
+
+	#modal2 #addForm .info #priceContainer .priceItem {
+		width: 117px;
+	}
+
+	.group-add {
+		display: block;
+	}
+
+	.group-add button {
+		margin: 0 65px;
+	}
+
+	#description {
+		display: flex;
+		flex-wrap: wrap;
+	}
 }
 
 @media only screen and (min-width: 501px) and (max-width: 840px) {
@@ -1189,11 +1115,11 @@ td {
 		display: none;
 	}
 
-	#topmenu{
+	#topmenu {
 		display: flex;
 	}
 
-	#responsive-menu{
+	#responsive-menu {
 		display: block;
 	}
 
@@ -1229,7 +1155,7 @@ td {
 		padding: 10px 100px 10px 50px;
 	}
 
-	.search-list{
+	.search-list {
 		margin-bottom: 10px;
 	}
 
@@ -1239,10 +1165,74 @@ td {
 		border: 2px solid rgba(0, 0, 0, .7);
 		margin: 0 0 0 33px;
 	}
+
+	#modal1 #changeproduct .info label {
+		width: 125px;
+	}
+
+	#modal1 #changeproduct .info input {
+		width: 300px;
+	}
+
+	#modal1 #changeproduct .info .desLabel {
+		width: 125px;
+	}
+
+	#modal1 #changeproduct .info .desInput {
+		width: 84px;
+	}
+
+	#modal1 #changeproduct button#save {
+		margin: 0 25%;
+	}
+
+	#modal1 .info #priceContainer .priceItem {
+		width: 100px;
+	}
+
+	#description {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	#modal2 #addForm .info label {
+		width: 164px;
+	}
+
+	#modal2 #addForm .info input {
+		width: 300px;
+	}
+
+	#modal2 #addForm .info .desLabel {
+		width: 125px;
+	}
+
+	#modal2 #addForm .info .desInput {
+		width: 84px;
+	}
+
+	#modal2 #addForm .info #priceContainer .priceItem {
+		width: 100px;
+	}
+
+	.group-add {
+		display: block;
+		margin: 10px 1%;
+	}
+
+	.group-add button {
+		margin: 0 65px;
+		width: 70px;
+	}
+
+	#description {
+		display: flex;
+		flex-wrap: wrap;
+	}
 }
 
-@media only screen and (min-width: 0) and (max-width: 500px){
-	
+@media only screen and (min-width: 0) and (max-width: 500px) {
+
 	#leftmenu {
 		display: none;
 	}

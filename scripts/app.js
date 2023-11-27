@@ -899,6 +899,7 @@ const signin = (event) => {
 
     errorsArea.append(emptyField);
     errorsArea.style.display = "block";
+    errorsArea.scrollIntoView();
 
     return false;
   } else {
@@ -927,6 +928,7 @@ const signin = (event) => {
       '<ion-icon name="alert-circle-outline" class="error-icon"></ion-icon>Kiểm tra lại thông tin đăng nhập!';
     errorsArea.append(incorrectInput);
     errorsArea.style.display = "block";
+    errorsArea.scrollIntoView();
   }
 
   return false;
@@ -1024,6 +1026,7 @@ const signup = (event) => {
 
     errorsArea.append(emptyField);
     errorsArea.style.display = "block";
+    document.querySelector(".signin-header").scrollIntoView();
 
     return false;
   } else {
@@ -1044,8 +1047,9 @@ const signup = (event) => {
 
     errorsArea.append(invalidPhoneNumber);
     errorsArea.style.display = "block";
-
+    document.querySelector(".signin-header").scrollIntoView();
     signupSection.querySelector("#phone").focus();
+
     return false;
   } else {
     errorsArea.innerHTML = "";
@@ -1065,8 +1069,9 @@ const signup = (event) => {
 
     errorsArea.append(invalidUsername);
     errorsArea.style.display = "block";
-
+    document.querySelector(".signin-header").scrollIntoView();
     signupSection.querySelector("#username").focus();
+
     return false;
   } else {
     errorsArea.innerHTML = "";
@@ -1086,8 +1091,9 @@ const signup = (event) => {
 
     errorsArea.append(invalidPassword);
     errorsArea.style.display = "block";
-
+    document.querySelector(".signin-header").scrollIntoView();
     signupSection.querySelector("#password").focus();
+
     return false;
   } else {
     errorsArea.innerHTML = "";
@@ -1107,8 +1113,9 @@ const signup = (event) => {
 
     errorsArea.append(invalidRepassword);
     errorsArea.style.display = "block";
-
+    document.querySelector(".signin-header").scrollIntoView();
     signupSection.querySelector("#repassword").focus();
+
     return false;
   } else {
     errorsArea.innerHTML = "";
@@ -1130,8 +1137,9 @@ const signup = (event) => {
 
       errorsArea.append(usernameAlreadyExists);
       errorsArea.style.display = "block";
-
+      document.querySelector(".signin-header").scrollIntoView();
       signupSection.querySelector("#username").focus();
+
       return false;
     } else {
       errorsArea.innerHTML = "";
@@ -1644,6 +1652,7 @@ const checkSignin = () => {
         "Chúng tôi đã gửi Phiếu giảm giá cho bạn. Đừng quên kiểm tra thư mục spam nếu bạn không tìm thấy nó!"
       );
       document.querySelector(".hide-screen").style.display = "none";
+      document.querySelector("#gift-clicked").remove();
       giftCLicked.remove();
     });
 
