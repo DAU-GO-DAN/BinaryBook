@@ -7,7 +7,14 @@
 body{
 	overflow: auto;
 }
-
+#leftmenu ul li a::before {
+	content: "";
+	left: 11px;
+	position: absolute;
+	width: 56px;
+	height: 50px;
+	background-color: transparent;
+}
 #wrap{
 	display: flex;
 	flex-wrap: wrap;
@@ -18,17 +25,17 @@ body{
 	overflow: hidden;
 	height: 100vh;
 	background: #000;
-	/* background: linear-gradient(0deg, rgba(255, 50, 125, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(40, 90, 255, 1) 100%); */
 	position: fixed;
 	transition: 0.5s;
 	border-top-right-radius: 10px;
 	border-bottom-right-radius: 10px;
+	font-family: 'IBM Plex Sans', sans-serif;
 }
 
 #leftmenu .logo {
 	width: 250px;
 	height: 80px;
-	background-color: #191919;
+	background-color: #000;
 	text-align: center;
 	margin: 30px 0;
 }
@@ -219,15 +226,17 @@ body{
     color: white;
     height: 35px;
 	padding: 0 5px;
-	font-family: "Roboto Mono", sans-serif;
+	/* font-family: "Roboto Mono", sans-serif; */
+	font-family: 'IBM Plex Sans', sans-serif;
 	font-size: 10pt;
 }
 #content #leftsection #maintable td{
   height: 30px;
   line-height: 30px;
   padding: 0px 10px;
-	font-family: "Roboto Mono", sans-serif;
+	/* font-family: "Roboto Mono", sans-serif; */
 	background-color: #f9eee9;
+	font-family: 'IBM Plex Sans', sans-serif;
 }
 /*#content #leftsection #maintable td:nth-child(2) {
     max-width: 200px; /* Adjust the value as needed 
@@ -334,14 +343,16 @@ body{
     color: white;
     height: 35px;
 	padding: 0 5px;
-	font-family: "Roboto Mono", sans-serif;
+	/* font-family: "Roboto Mono", sans-serif; */
+	font-family: 'IBM Plex Sans', sans-serif;
 	font-size: 10pt;
 }
 #content #rightsection td{
   height: 30px;
   line-height: 30px;
   padding: 0px 10px;
-	font-family: "Roboto Mono", sans-serif;
+	/* font-family: "Roboto Mono", sans-serif; */
+	font-family: 'IBM Plex Sans', sans-serif;
 	background-color: #ebe7de;
 }
 #content #rightsection td:last-child{
@@ -389,6 +400,12 @@ body{
 		background-color: white;
 		display: flex;
 		justify-content: space-evenly;
+	}
+	#leftmenu ul li:hover {
+		border-right: none;
+		background: #fff;
+		transition: 0.5s;
+		cursor: pointer;
 	}
 }
 @media only screen and (min-width: 0px) and (max-width: 548px){

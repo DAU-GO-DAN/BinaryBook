@@ -45,16 +45,13 @@ a, img, button {
   cursor: pointer;
 }
 
-
 /* --------------------------------------------------------------- */
 
 /* phần chung */
-
 body {
   font-family: 'Open Sans', sans-serif;
   box-sizing: border-box;
 }
-
 .main {
 	background:
     radial-gradient(#3a86ff 3px, transparent 4px),
@@ -66,7 +63,6 @@ body {
     background-size: 109px 109px, 109px 109px,100% 6px, 109px 109px, 109px 109px;
     background-position: 54px 55px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
 }
-
 header, main, footer {
   box-sizing: border-box;
   background-color: white;
@@ -74,7 +70,6 @@ header, main, footer {
   height: auto;
   margin: 0 auto;
 }
-
 .main {
   display: flex;
   flex-flow: column nowrap;
@@ -93,7 +88,6 @@ header, main, footer {
 .normal-box {
   width: 50%;
   height: auto;
-  
   position: fixed;
   top: 50%;
   left: 50%;
@@ -106,8 +100,7 @@ header, main, footer {
   position: fixed;
   z-index: 10;
 }
-
-/* **************** */
+/* kết thúc phần chung */
 
 
 /* bắt đầu phần cart */
@@ -825,6 +818,7 @@ header, main, footer {
   width: 16px;
 }
 /* kết thúc phần best-seller */
+
 /* bắt đầu phần phân trang */
 .pagination {
   margin-top: 1rem;
@@ -912,9 +906,7 @@ header, main, footer {
 .well-known .add-to-cart {
   background-color: #0066ff;
 }
-
 /* kết thúc phần well-known */
-
 
 /* bắt đầu phần header */
 .header {
@@ -940,6 +932,8 @@ header, main, footer {
 }
 .heart-icon-before {
   color: #ff1c58;
+  position: relative;
+  top: 3px;
 }
 .pre-header a {
   color: #ff327d;
@@ -1106,7 +1100,7 @@ header, main, footer {
 .gift-icon {
   box-sizing: border-box;
   transform: scale(3.5);
-  color: #00ff3c;
+  color: #43d400;
   border-radius: 2rem;
   border: none;
   outline: none;
@@ -1181,7 +1175,7 @@ header, main, footer {
   background-color: #5f7a99;
 }
 
-/* sub-header đã được chuyển sang main */
+/* NOTE: sub-header đã được chuyển sang main */
 .sub-header {
   box-sizing: border-box;
   width: 100%;

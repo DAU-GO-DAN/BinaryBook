@@ -154,7 +154,8 @@
               <option value="typescript">Typescript</option>
               <option value="csharp">C#</option>
               <option value="css">CSS</option>
-            ><br />
+            </select>
+            <br />
             <label for="authors">Tác giả</label>
             <input type="text" id="authors" />
             <div id="priceContainer">
@@ -246,7 +247,8 @@
                 <option value="typescript">Typescript</option>
                 <option value="csharp">C#</option>
                 <option value="css">Css</option>
-              ><br />
+              </select>
+              <br />
               <label for="newAuthors">Tác giả</label>
               <input type="text" id="newAuthors" />
               <div id="priceContainer">
@@ -287,7 +289,7 @@
                 </span>
               </div>
               <label>Ảnh</label>
-              <input type="file" onchange="changeimgadd(this)" /><br />
+              <input id="imageadd" type="file" onchange="changeimgadd(this)" /><br />
               <div class="group-add">
                 <button type="reset">Xóa</button>
                 <button type="button" onclick="addProduct()">Thêm</button>

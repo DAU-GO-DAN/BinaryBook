@@ -1,12 +1,13 @@
+//Định dạng số
 function currency(num) {
   return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.") + " VND";
 }
-
+//Đóng modal
 function closechangebox() {
   document.getElementById("modal1").style.display = "none";
   document.getElementById("modal2").style.display = "none";
 }
-
+//Hiển thị danh sách sản phẩm
 function showProductList(index) {
   var booksArray = JSON.parse(localStorage.getItem("wellKnownBooks")).concat(
     JSON.parse(localStorage.getItem("bestSellerBooks"))

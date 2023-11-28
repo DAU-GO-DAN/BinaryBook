@@ -83,4 +83,10 @@ td, th {
         background-color: white;
         font-size: 14px;
     }
+    #leftmenu ul li:hover {
+		border-right: none;
+		background: #fff;
+		transition: 0.5s;
+		cursor: pointer;
+	}
 }

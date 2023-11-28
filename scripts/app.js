@@ -565,7 +565,7 @@ const showProducts = () => {
 // Hàm bổ sung sub-header
 const createSubheader = () => {
   const subheaderItemTitles = [
-    ["Algorithms & Data Structures", "dsa"],
+    ["Data Structures & Algorithms", "dsa"],
     ["C/C++", "c/cpp"],
     ["C#", "csharp"],
     ["CSS", "css"],
@@ -639,7 +639,7 @@ const createLinkColumn = () => {
 };
 
 // HÀM NÀY ĐỂ THÊM SỰ KIỆN XEM THÊM THÔNG TIN SÁCH KHI NGƯỜI DÙNG CLICK VÀO ẢNH
-// NOTE: ctn được đặt là ".main"
+// NOTE: ctn là ".main" khi gọi
 const addShowMoreDetailsEvent = (ctn) => {
   const bestSellerBooks = JSON.parse(localStorage.getItem("bestSellerBooks"));
   const wellKnownBooks = JSON.parse(localStorage.getItem("wellKnownBooks"));
@@ -809,7 +809,7 @@ const showSearchResults = (books) => {
   filter.innerHTML = `
     <select class="filter-category">
       <option value="all" selected="">Tất cả</option>
-      <option value="dsa">Algorithms & Data Structures</option>
+      <option value="dsa">Data Structures & Algorithms</option>
       <option value="c/cpp">C/C++</option>
       <option value="csharp">C#</option>
       <option value="database">Database</option>
@@ -1544,7 +1544,7 @@ const showCartSection = () => {
   });
 };
 
-// PHẦN NÀY ĐỂ KIỂM TRA ĐĂNG NHẬP ĐỂ ĐIỀU CHỈNH MỘT SỐ NỘI DUNG
+// PHẦN NÀY ĐỂ KIỂM TRA ĐĂNG NHẬP NHẰM ĐIỀU CHỈNH MỘT SỐ NỘI DUNG
 const checkSignin = () => {
   const getActiveUser = localStorage.getItem("activeUser");
   const headerNav = document.querySelector(".header-nav-area");
